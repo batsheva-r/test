@@ -1,0 +1,16 @@
+<form [formGroup]="myForm" class="con" >
+    <input class=""  type="checkbox" [ngClass]="{'is-invalid':myForm.controls.deliveryFlag.invalid && myForm.controls.deliveryFlag.dirty, 'is-valid':myForm.controls.deliveryFlag.valid && myForm.controls.deliveryFlag.dirty }" [checked]="newContact.deliveryFlag" formControlName="deliveryFlag" name="deliveryFlag"/>
+    <input required pattern="^[א-ת]+$" type="text" formControlName="name"  name="name" [ngClass]="{'is-invalid':myForm.controls.name.invalid && myForm.controls.name.dirty, 'is-valid':myForm.controls.name.valid && myForm.controls.name.dirty }"/>
+   <div formGroupName="type" >
+    <select required  formControlName="code" name="code" 
+    [ngClass]="{'is-invalid': this.myForm.controls.type.get('code').invalid && this.myForm.controls.type.get('code').dirty, 'is-valid': this.myForm.controls.type.get('code').valid && this.myForm.controls.type.get('code').dirty }"
+       ><option *ngFor="let contactPersonType of contactTypes" [ngValue]="contactPersonType.code">
+            {{contactPersonType.value}}
+        </option>
+    </select>
+    </div>
+    <input  type="text" formControlName="address" name="address" [ngClass]="{'is-invalid':myForm.controls.address.invalid && myForm.controls.address.dirty, 'is-valid':myForm.controls.address.valid && myForm.controls.address.dirty }"/>
+    <input required pattern="([0-9]{10})" type="tel" formControlName="phoneNumber"  name="phone" [ngClass]="{'is-invalid':myForm.controls.phoneNumber.invalid && myForm.controls.phoneNumber.dirty, 'is-valid':myForm.controls.phoneNumber.valid && myForm.controls.phoneNumber.dirty }"/>
+    <input  type="email"  formControlName="email"  [ngClass]="{'is-invalid':myForm.controls.email.invalid && myForm.controls.email.dirty, 'is-valid':myForm.controls.email.valid && myForm.controls.email.dirty }"/>
+    <button  type="button" (click)="addNewContact()">+</button>
+</form>

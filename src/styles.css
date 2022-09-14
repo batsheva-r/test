@@ -1,0 +1,46 @@
+body{
+    display: flex;
+justify-content: center;
+}
+label{
+    padding: 5pt;
+    text-align: right;
+}
+
+.con{
+    display: flex;
+    justify-content: space-around;
+}
+
+.control{
+display: flex;
+justify-content: space-around;
+}
+button{
+    margin-left: 5pt;
+    margin-right: 5pt;
+    color:white;
+    background-color:darkblue ;
+
+}
+button:disabled{
+    margin-left: 5pt;
+    margin-right: 5pt;
+    color:white;
+    background-color:cornflowerblue ;
+
+}
+h6{
+    background-color: lightblue;
+}
+.wrap{
+    border: solid;
+    border-color: blue;
+    margin: 2pt;
+    padding: 5pt;
+
+}
+.bgc{
+    margin-bottom: 10pt;
+    text-align: right;
+}

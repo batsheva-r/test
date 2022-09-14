@@ -1,0 +1,72 @@
+<form [formGroup]="myForm" novalidate class="wrap ">
+    <h6>ריכוז מידע בתהליך</h6>
+
+    <div class="bgc">
+        <label>פרטי מבוטח:</label>
+        <div class="con">
+            <label>שם</label>
+            <label>ת.ז</label>
+            <label>גיל</label>
+            <label>כתובת</label>
+        </div>
+        <div class="con">
+            <label>{{insured.firstName +" "+insured.lastName}}</label>
+            <label>{{insured.identity}}</label>
+            <label>{{insured.age}}</label>
+            <label>{{insured.address.streetName +", "+insured.address.cityName}}</label>
+        </div>
+    </div>
+
+    <div class=" control">
+        <div class="">
+            <div formGroupName="superClaimType">
+                <label>סוג תביעה על:</label>
+                <select required formControlName="code">
+                    <option *ngFor="let superClaimType of superClaimTypes" [ngValue]="superClaimType.code">
+                        {{superClaimType.value}}
+                    </option>
+                </select>
+            </div>
+
+            <div formGroupName="claimCause">
+                <label>סיבת אירוע:</label>
+                <select required formControlName="code" (change)="claimCauseChanged()">
+                    <option *ngFor="let claimCause of claimCauses" [ngValue]="claimCause.code">
+                        {{claimCause.value}}
+                    </option>
+                </select>
+            </div>
+            <div>
+                <label>תביעה הוגשה באמצעות:</label>
+                <select formControlName="submitedBy" (change)="chackIfExist()" required>
+                    <option *ngFor="let submitedBy of contactTypes " [ngValue]="submitedBy.code">
+                        {{submitedBy.value}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div >
+            <div>
+                <label>תאריך אירוע:</label>
+                <input type="date" formControlName="eventDate" required />
+            </div>
+            <div formGroupName="injuryType" *ngIf="isClaimCauseChanged">
+                <label>מהות האירוע:</label>
+                <select formControlName="code" >
+                    <option *ngFor="let injuryType of injuryTypes" [ngValue]="injuryType.code">
+                        {{injuryType.value}}
+                    </option>
+                </select>
+            </div>
+            <div formGroupName="submitionMethod">
+                <label>אופן קבלת התביעה:</label>
+                <select type="text" formControlName="code">
+                    <option *ngFor="let sd of submitionMethods" [ngValue]="sd.code">
+                        {{sd.value}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+</form>

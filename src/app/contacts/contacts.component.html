@@ -1,0 +1,19 @@
+<div class="wrap">
+    <h6>אנשי קשר</h6>
+
+<div class="con">
+    <label>מועדף</label>
+    <label>שם איש קשר</label>
+    <label>סוג</label>
+    <label>כתובת</label>
+    <label>טלפון נייד</label>
+    <label>דוא"ל</label>
+</div>
+<div class="">
+    <app-contact *ngFor="let contact of contacts" [contact]="contact"></app-contact>
+    <app-add-contact (onNewContactAdded)="newContactAdded($event)" *ngIf="newContFlag"></app-add-contact>
+</div>
+<div>
+    <button type="button" (click)="addContact()">הוסף איש קשר</button>
+</div>
+</div>

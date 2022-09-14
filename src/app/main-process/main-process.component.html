@@ -1,0 +1,21 @@
+<div>
+   
+
+<div class="container con">
+    <div>
+<label>תביעת על:</label>
+<label>{{mainProcess.superClaim.superClaimNum}}</label>
+</div>
+<div>
+<label>מצב תביעה:</label>
+<label>{{mainProcess.superClaim.superClaimStatus.value}}</label>
+</div>
+<button (click)="refreshProcess()">ריענון תהליך</button>
+</div>
+<app-process-info (submitedByChange)="submitedByChanged($event)" (groupIsValid)="onChildComponentEvent($event)" [insured]="mainProcess.insured" [superClaim]="mainProcess.superClaim"></app-process-info>
+<app-menu-contacts (onFullReset)="fullReset()" (onContactsReset)="contactsReset()" (onAddInsured)="addInsured()" [numContacts]="numContacts"></app-menu-contacts>
+<app-contacts  [contacts]="mainProcess.contactPersons" (onContactAdded)="contactAdded($event)"></app-contacts>
+
+<br/>
+<button [disabled]="!infoIsValid || !submitedByValid ||!contactsValid" (click)="continue()">המשך</button>
+</div>
